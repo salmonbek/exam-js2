@@ -136,6 +136,13 @@ a {
   color: inherit;
 }
 
+.dark .countries-container {
+  h3,
+  p {
+    color: white;
+  }
+}
+
 button {
   background: transparent;
   border: none;
