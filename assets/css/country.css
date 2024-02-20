@@ -14,17 +14,19 @@
 
 main {
   min-height: 100%;
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 200px;
 }
 
 .bg-video {
   position: absolute;
   top: 0;
   left: 0;
+  right: 0;
   z-index: -1;
   -webkit-filter: blur(8px);
           filter: blur(8px);
-  min-width: 100%;
-  min-height: 100%;
 }
 
 .country-details {
