@@ -336,6 +336,15 @@ main {
   }
 }
 
+@media (max-width: 650px) {
+  .search-filter-container {
+    select {
+      margin-right: auto;
+      margin-left: auto;
+    }
+  }
+}
+
 .filter-by-region {
   width: 250px;
   appearance: none;
