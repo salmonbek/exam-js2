@@ -26,7 +26,7 @@ modeBtn.addEventListener("click", function () {
   }
   document.body.classList.toggle("dark");
 });
-// mode//////////////////////////////////////////
+// mode/////////////////
 
 // loading
 const loading = document.getElementById("loading");
@@ -52,6 +52,7 @@ let newdata = [
 
   5,
 ];
+
 let limit = 12;
 fetch("https://restcountries.com/v3.1/all")
   .then((res) => res.json())
