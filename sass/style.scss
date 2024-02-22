@@ -112,6 +112,35 @@ ul {
 // LOADING
 
 body {
+  scroll-behavior: smooth;
+}
+
+#backtop {
+  border-radius: 50%;
+  background-color: #6f7067;
+  position: fixed;
+  bottom: -50px;
+  right: 60px;
+  z-index: 1000;
+  transition: all 0.9s;
+}
+
+body {
+  #backtop.backtop-show {
+    bottom: 50px;
+  }
+}
+// #backtop.baktop-show {
+//   bottom: 60px;
+// }
+#backtop {
+  a {
+    display: block;
+    padding: 10px;
+  }
+}
+
+body {
   // --background-color: white;
   // --text-color: black;
   // --elements-color: white;

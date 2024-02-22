@@ -1,3 +1,20 @@
+window.addEventListener("scroll", function () {
+  toggleBacktop();
+});
+
+let backtop = document.getElementById("backtop");
+
+function toggleBacktop() {
+  if (
+    document.body.scrollTop > 150 ||
+    document.documentElement.scrollTop > 150
+  ) {
+    backtop.classList.add("backtop-show");
+  } else {
+    backtop.classList.remove("backtop-show");
+  }
+}
+
 // mode /////////////////////////////////////
 let modeBtn = document.getElementById("mode-btn");
 modeBtn.addEventListener("click", function () {
@@ -8,11 +25,11 @@ modeBtn.addEventListener("click", function () {
   }
   document.body.classList.toggle("dark");
 });
+// mode/////////////
 
 // loading
 const loading = document.getElementById("loading");
-const loadingDuration = 2500;
-
+const loadingDuration = 1400;
 setTimeout(() => {
   loading.classList.add(`loading-none`);
 }, loadingDuration);
@@ -167,4 +184,54 @@ function fetchData(data) {
 
 function paginate(array, page_size, page_number) {
   return array.slice((page_number - 1) * page_size, page_number * page_size);
+}
+
+// ///////////////sort
+document.addEventListener("DOMContentLoaded", function () {
+  loadCountries();
+});
+
+function filterCountries() {
+  const selectedCountry = document.getElementById("countrySelect").value;
+  let countries = JSON.parse(localStorage.getItem("countries")) || [];
+  let filteredCountries;
+
+  if (selectedCountry === "") {
+    filteredCountries = countries;
+  } else {
+    filteredCountries = countries.filter(
+      (country) => country.name === selectedCountry
+    );
+  }
+
+  displayFilteredCountries(filteredCountries);
+}
+
+function loadCountries() {
+  let countries = JSON.parse(localStorage.getItem("countries")) || [];
+  const countrySelect = document.getElementById("countrySelect");
+
+  countries.forEach((country) => {
+    const option = document.createElement("option");
+    option.value = country.name;
+    option.textContent = `${country.name} (${country.population}, ${country.capital})`;
+    countrySelect.appendChild(option);
+  });
+
+  filterCountries(); // Ishonchli tanlov uchun filtratsiya qilamiz
+}
+
+function displayFilteredCountries(countries) {
+  const filteredCountriesDiv = document.getElementById("filteredCountries");
+  filteredCountriesDiv.innerHTML = ""; // Oldiqlik qilish
+  countries.forEach((country) => {
+    const countryDiv = document.createElement("div");
+    countryDiv.innerHTML = `
+      <p><strong>Davlat:</strong> ${country.name}</p>
+      <p><strong>Aholisi:</strong> ${country.population}</p>
+      <p><strong>Poytaxt:</strong> ${country.capital}</p>
+      <hr>
+    `;
+    filteredCountriesDiv.appendChild(countryDiv);
+  });
 }

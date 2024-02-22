@@ -16,6 +16,7 @@
 
 <body>
 
+
     <!-- LOADING -->
     <div id="loading">
         <div class="loadingio-spinner-dual-ring-oah0t427fm">
@@ -28,6 +29,17 @@
         </div>
     </div>
     <!-- LOADING -->
+
+
+    <!-- backtop -->
+    <div id="backtop">
+        <a href="#">
+            <img src="images/top.svg" alt="">
+        </a>
+    </div>
+    <!-- backtop -->
+
+
 
     <!-- header section -->
     <header class="header-container">
@@ -56,6 +68,12 @@
                 <option value="Europe">Europe</option>
                 <option value="Oceania">Oceania</option>
             </select>
+            <!-- <h2>Davlat Ma'lumotlari</h2> -->
+            <!-- <label for="countrySelect">Davlat tanlang:</label> -->
+            <select id="countrySelect" onchange="filterCountries()">
+                <option value="">Hammasi</option>
+            </select>
+            <div id="filteredCountries"></div>
         </div>
         <div class="countries-container">
         </div>
