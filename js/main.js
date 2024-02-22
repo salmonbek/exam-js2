@@ -58,6 +58,7 @@ fetch("https://restcountries.com/v3.1/all")
   .then((res) => res.json())
   .then((data) => {
     allCountriesData = data;
+    Sort(data);
     fetchData(paginate(data, params[1] || limit, params[0] || 1));
   });
 
@@ -136,14 +137,14 @@ searchInput.addEventListener("input", (e) => {
   });
 });
 
-themeChanger.addEventListener("click", function () {
-  if (document.body.className != "dark") {
-    this.firstElementChild.src = "assets/images/light.svg";
-  } else {
-    this.firstElementChild.src = "assets/images/mode.svg";
-  }
-  document.body.classList.toggle("dark");
-});
+// themeChanger.addEventListener("click", function () {
+//   if (document.body.className != "dark") {
+//     this.firstElementChild.src = "assets/images/light.svg";
+//   } else {
+//     this.firstElementChild.src = "assets/images/mode.svg";
+//   }
+//   document.body.classList.toggle("dark");
+// });
 
 function fetchData(data) {
   let newdata = [
@@ -189,9 +190,10 @@ function paginate(array, page_size, page_number) {
 }
 
 // ///////////////sort
-let sort = document.querySelector(".region");
+let sort = document.querySelector(".filter-of-population");
 
 function Sort(data) {
+  console.log(data);
   sort.addEventListener("change", (e) => {
     let value = e.target.value;
     countMis = 0;
@@ -236,6 +238,6 @@ function Sort(data) {
       });
     }
 
-    fetchCard(data);
+    fetchData(data);
   });
 }
