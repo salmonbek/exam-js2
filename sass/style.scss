@@ -317,6 +317,25 @@ main {
   color: #999;
 }
 
+.filter-of-population {
+  width: 250px;
+  appearance: none;
+  padding: 16px;
+  border: none;
+  outline: none;
+  box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  background-color: rgb(10, 165, 189);
+  color: var(--text-color);
+  .name {
+    color: rgb(29, 30, 31);
+  }
+  option {
+    color: rgb(29, 27, 27);
+    margin-bottom: 12px;
+  }
+}
+
 .filter-by-region {
   width: 250px;
   appearance: none;
@@ -328,10 +347,10 @@ main {
   background-color: rgb(10, 165, 189);
   color: var(--text-color);
   .name {
-    color: aliceblue;
+    color: rgb(29, 30, 31);
   }
   option {
-    color: rgb(249, 249, 249);
+    color: rgb(29, 27, 27);
     margin-bottom: 12px;
   }
 }
