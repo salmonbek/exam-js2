@@ -1,3 +1,4 @@
+// backtop////////
 window.addEventListener("scroll", function () {
   toggleBacktop();
 });
@@ -6,8 +7,8 @@ let backtop = document.getElementById("backtop");
 
 function toggleBacktop() {
   if (
-    document.body.scrollTop > 150 ||
-    document.documentElement.scrollTop > 150
+    document.body.scrollTop > 200 ||
+    document.documentElement.scrollTop > 200
   ) {
     backtop.classList.add("backtop-show");
   } else {
@@ -25,7 +26,7 @@ modeBtn.addEventListener("click", function () {
   }
   document.body.classList.toggle("dark");
 });
-// mode/////////////
+// mode//////////////////////////////////////////
 
 // loading
 const loading = document.getElementById("loading");
@@ -187,51 +188,53 @@ function paginate(array, page_size, page_number) {
 }
 
 // ///////////////sort
-document.addEventListener("DOMContentLoaded", function () {
-  loadCountries();
-});
+let sort = document.querySelector(".region");
 
-function filterCountries() {
-  const selectedCountry = document.getElementById("countrySelect").value;
-  let countries = JSON.parse(localStorage.getItem("countries")) || [];
-  let filteredCountries;
+function Sort(data) {
+  sort.addEventListener("change", (e) => {
+    let value = e.target.value;
+    countMis = 0;
+    countMus = 16;
+    if (value === "population") {
+      data.sort((a, b) => b?.population - a?.population);
+    }
+    if (value === "all") {
+      fetchData(api);
+    }
+    if (value === "region") {
+      data.sort((a, b) => {
+        let regionA = a.region.toLowerCase();
+        let regionB = b.region.toLowerCase();
+        if (regionA < regionB) {
+          return -1;
+        }
+      });
+    }
+    if (value === "capital") {
+      data.sort((a, b) => {
+        let capitalA =
+          Array.isArray(a.capital) && a.capital.length > 0
+            ? a.capital[0].toLowerCase()
+            : "";
+        let capitalB =
+          Array.isArray(b.capital) && b.capital.length > 0
+            ? b.capital[0].toLowerCase()
+            : "";
+        if (capitalA < capitalB) {
+          return -1;
+        }
+      });
+    }
+    if (value === "title") {
+      data.sort((a, b) => {
+        let regionA = a.name?.common?.toLowerCase();
+        let regionB = b.name?.common?.toLowerCase();
+        if (regionA < regionB) {
+          return -1;
+        }
+      });
+    }
 
-  if (selectedCountry === "") {
-    filteredCountries = countries;
-  } else {
-    filteredCountries = countries.filter(
-      (country) => country.name === selectedCountry
-    );
-  }
-
-  displayFilteredCountries(filteredCountries);
-}
-
-function loadCountries() {
-  let countries = JSON.parse(localStorage.getItem("countries")) || [];
-  const countrySelect = document.getElementById("countrySelect");
-
-  countries.forEach((country) => {
-    const option = document.createElement("option");
-    option.value = country.name;
-    option.textContent = `${country.name} (${country.population}, ${country.capital})`;
-    countrySelect.appendChild(option);
-  });
-
-  filterCountries(); // Ishonchli tanlov uchun filtratsiya qilamiz
-}
-
-function displayFilteredCountries(countries) {
-  const filteredCountriesDiv = document.getElementById("filteredCountries");
-  filteredCountriesDiv.innerHTML = ""; // Oldiqlik qilish
-  countries.forEach((country) => {
-    const countryDiv = document.createElement("div");
-    countryDiv.innerHTML = `
-      <p><strong>Davlat:</strong> ${country.name}</p>
-      <p><strong>Aholisi:</strong> ${country.population}</p>
-      <p><strong>Poytaxt:</strong> ${country.capital}</p>
-      <hr>
-    `;
-    filteredCountriesDiv.appendChild(countryDiv);
+    fetchCard(data);
   });
 }

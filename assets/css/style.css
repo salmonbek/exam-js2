@@ -137,7 +137,7 @@ ul {
           box-sizing: content-box;
 }
 
-body {
+html {
   scroll-behavior: smooth;
 }
 
@@ -374,13 +374,17 @@ main {
 }
 
 .filter-by-region {
+  width: 250px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   padding: 16px;
   border: none;
   outline: none;
   -webkit-box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.15);
           box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
-  background-color: rgb(0, 153, 69);
+  background-color: rgb(10, 165, 189);
   color: var(--text-color);
 }
 .filter-by-region .name {

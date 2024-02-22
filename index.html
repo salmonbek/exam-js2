@@ -11,12 +11,11 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,regular,500,600,700,800" rel="stylesheet" />
     <link rel="stylesheet" href="assets/css/style.css" />
-
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
+
 <body>
-
-
     <!-- LOADING -->
     <div id="loading">
         <div class="loadingio-spinner-dual-ring-oah0t427fm">
@@ -53,6 +52,8 @@
     <!-- header section -->
 
 
+
+
     <!-- main section -->
     <main>
         <div class="search-filter-container">
@@ -60,18 +61,21 @@
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <input id="input-area" type="text" placeholder="Search for a country...">
             </div>
+            <select class="region">
+                <option value="all">Total-sort</option>
+                <option value="population">Population</option>
+                <option value="region">Region</option>
+                <option value="capital">Capital</option>
+                <option value="title">Title</option>
+            </select>
             <select class="filter-by-region">
+                <!-- <img src="images/bootom-arrow.svg" alt=""> -->
                 <option class="name" hidden>Filter by Region</option>
                 <option value="Africa">Africa</option>
                 <option value="America">America</option>
                 <option value="Asia">Asia</option>
                 <option value="Europe">Europe</option>
                 <option value="Oceania">Oceania</option>
-            </select>
-            <!-- <h2>Davlat Ma'lumotlari</h2> -->
-            <!-- <label for="countrySelect">Davlat tanlang:</label> -->
-            <select id="countrySelect" onchange="filterCountries()">
-                <option value="">Hammasi</option>
             </select>
             <div id="filteredCountries"></div>
         </div>
@@ -80,7 +84,16 @@
     </main>
     <!-- main section -->
 
+
+
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
     <script src="js/main.js"></script>
+
+
 </body>
 
 </html>
